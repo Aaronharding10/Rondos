@@ -10,7 +10,7 @@ class RestaurantBooking(models.model) :
     booking_date = models.DateField()
     booking_time = models.TimeField()
     num_guests = models.PositiveIntegerField()
-    special_requests = models.TextField()
+    special_requests = models.TextField(blank=True, null=True)
     baby_chair = models.BooleanField(default=false)
 
     def __str__(self) : 
