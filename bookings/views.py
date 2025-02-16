@@ -3,6 +3,17 @@ from .models import RestaurantBooking
 from .forms import BookingForm
 
 # Create your views here.
+
+"""
+Home page view
+"""
+
+def home(request):
+    """
+    Home page of the restaurant, showing basic information and a booking option.
+    """
+    return render(request, 'home.html')
+
 """
 function to handle booking creation and redirect to 
 """
