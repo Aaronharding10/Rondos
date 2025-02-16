@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+"""
+model for bookings, to prevent double bookings and checks past bookings
+"""
+
 class RestaurantBooking(models.Model):
     PENDING = 'pending'
     APPROVED = 'approved'
@@ -27,6 +31,25 @@ class RestaurantBooking(models.Model):
         choices=STATUS_CHOICES,
         default=PENDING,  # Default status is 'pending'
     )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+
+    class Meta : 
+        unique_together = ('booking_date', 'booking_time', 'table')
+
+    def clean(self): 
+
+        existing_booking = RestaurantBooking.objects.filter(
+            booking_date=self.booking.date,
+            booking_time=self.booking.time,
+            table=self.table
+        ).exclude(id=self.id)
+
+        if existing_booking.exists():
+            raise ValidationError("Unfortunately this table is already booked at the time selected")
+        
+
+
 
     def __str__(self):
         return f"{self.customer_name} - {self.booking_date} - {self.status}"
