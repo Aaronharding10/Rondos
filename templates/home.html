@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="home-page">
+        <h2>Welcome to Rondo's Restaurant</h2>
+        <p>At Rondo's, we offer an exquisite dining experience with a variety of delicious dishes made from fresh, local ingredients. 
+        <p>Our cozy atmosphere, great service, and amazing food make it an unforgettable experience</p>
+
+        <div class="booking-option">
+            <p>Book a table here</p>
+            <a href="{% url 'create_booking' %}" class="btn-book-now">Book a Table Now</a>
+        </div>
+    </div>
+{% endblock %}
