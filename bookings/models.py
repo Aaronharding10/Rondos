@@ -2,12 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-# Create your models here.
-
-"""
-model for bookings, to prevent double bookings and checks past bookings
-"""
-
 class RestaurantBooking(models.Model):
     PENDING = 'pending'
     APPROVED = 'approved'
@@ -18,7 +12,7 @@ class RestaurantBooking(models.Model):
         (APPROVED, 'Approved'),
         (REJECTED, 'Rejected'),
     ]
-    
+
     customer_name = models.CharField(max_length=50)
     customer_email = models.EmailField()
     customer_phone = models.CharField(max_length=15)
@@ -30,31 +24,35 @@ class RestaurantBooking(models.Model):
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,
-        default=PENDING,  # Default status is 'pending'
+        default=PENDING,
     )
-
+    table = models.PositiveIntegerField()  
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
-    class Meta : 
-        unique_together = ('booking_date', 'booking_time', 'table')
+"""
+used to prevent duplicate bookings
+"""
+    class Meta:
+        unique_together = ('booking_date', 'booking_time', 'table') 
 
-    def clean(self): 
-
+    def clean(self):
+        """ 
+        Prevent double booking for the same table at the same time
+        """
         existing_booking = RestaurantBooking.objects.filter(
-            booking_date=self.booking.date,
-            booking_time=self.booking.time,
+            booking_date=self.booking_date,
+            booking_time=self.booking_time,
             table=self.table
-        ).exclude(id=self.id)
-
+        ).exclude(id=self.id)  
         if existing_booking.exists():
-            raise ValidationError("This table is already booked at the time selected")
-        
+            raise ValidationError("This table is already booked at the selected time.")
 
-        def save(self,*args,**kwargs)
-            self.clean()
-            super().save(*args, **kwargs)
-
-
+    def save(self, *args, **kwargs):
+        """
+        Validate before saving
+        """
+        self.clean()
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.customer_name} - {self.booking_date} - {self.status}"
+        return f"{self.customer_name} - {self.booking_date} {self.booking_time} - Table {self.table}"
