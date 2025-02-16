@@ -50,7 +50,9 @@ class RestaurantBooking(models.Model):
             raise ValidationError("This table is already booked at the time selected")
         
 
-        
+        def save(self,*args,**kwargs)
+            self.clean()
+            super().save(*args, **kwargs)
 
 
 
