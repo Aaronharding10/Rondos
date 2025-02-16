@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Create a Booking
+{% endblock %}
+
+{% block content %}
+<!-- Create Booking Form -->
+
+<div class="container">
+    <h2 class="text-center custom-heading">Make Your Booking</h2>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label for="customer_name">Full Name</label>
+                            {{ form.customer_name }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customer_email">Email</label>
+                            {{ form.customer_email }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customer_phone">Phone Number</label>
+                            {{ form.customer_phone }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking_date">Booking Date</label>
+                            {{ form.booking_date }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking_time">Booking Time</label>
+                            {{ form.booking_time }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="num_guests">Number of Guests</label>
+                            {{ form.num_guests }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="special_requests">Special Requests</label>
+                            {{ form.special_requests }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="baby_chair">Need a Baby Chair?</label>
+                            {{ form.baby_chair }}
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-block">Confirm Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
