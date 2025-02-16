@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -46,7 +47,9 @@ class RestaurantBooking(models.Model):
         ).exclude(id=self.id)
 
         if existing_booking.exists():
-            raise ValidationError("Unfortunately this table is already booked at the time selected")
+            raise ValidationError("This table is already booked at the time selected")
+        
+
         
 
 
