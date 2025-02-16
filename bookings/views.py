@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import RestaurantBooking
+from .forms import BookingForm
 
 # Create your views here.
 """
