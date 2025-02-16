@@ -10,7 +10,7 @@ Home page view
 
 def home(request):
     """
-    Home page of the restaurant, showing basic information and a booking option.
+    Home page of the restaurant, showing basic info and a booking option.
     """
     return render(request, 'home.html')
 
