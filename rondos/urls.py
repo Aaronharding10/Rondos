@@ -20,6 +20,7 @@ from django.conf.urls import handler404, handler500
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('bookings/create/', views.create_booking, name='create_booking'),
 ]
 
 """
