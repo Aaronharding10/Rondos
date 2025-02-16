@@ -1,13 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Error</title>
-</head>
-<body>
-    <h1>Something Went Wrong (500)</h1>
-    <p>We're sorry, but there seems to be a problem with our server.</p>
-    <a href="{% url 'home' %}">Go Back to Home</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+Server Error
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body text-center">
+          <h1 class="text-center custom-heading">Oops! 500 Error</h1>
+          <h2 class="text-center custom-heading">Internal Server Error</h2>
+          <div class="card-text">
+            <p>Something went wrong on our side. We’re already working to fix it!</p>
+            <p>Sorry for the inconvenience, please try again later.</p>
+          </div>
+          <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
