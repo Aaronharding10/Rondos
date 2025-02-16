@@ -1,13 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found</title>
-</head>
-<body>
-    <h1>Oops! Page Not Found (404)</h1>
-    <p>The page you were looking for doesn't exist.</p>
-    <a href="{% url 'home' %}">Go Back to Home</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+Page Not Found
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body text-center">
+          <h1 class="text-center custom-heading">Oops! 404 Error</h1>
+          <h2 class="text-center custom-heading">Page Not Found</h2>
+          <div class="card-text">
+            <p>Uh-oh! It looks like the page you're looking for is unavailable or doesn't exist.</p>
+            <p>Don't worry, let's help you get back to the main restaurant site!</p>
+          </div>
+          <a href="{% url 'home' %}" class="btn btn-primary">Take Me Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
