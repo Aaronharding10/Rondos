@@ -15,6 +15,31 @@ def create_booking(request):
 
     return render(request, 'bookings/create_booking.html', {'form': form})
 
+def booking_list(request):
+    bookings = RestaurantBooking.objects.all()
+    return render(request, 'bookings/booking_list.html', {'bookings': bookings})
+
+def booking_detail(request, booking_id):
+    booking = get_object_or_404(RestaurantBooking, id=booking_id)
+    return render(request, 'bookings/booking_detail.html', {'booking': booking})
+
+"""
+function to edit booking
+"""
+def edit_booking(request, booking_id):
+    booking = get_object_or_404(RestaurantBooking, id=booking_id)
+    if request.method == 'POST':
+        form = BookingForm(request.POST, instance=booking)
+        if form.is_valid():
+            form.save()
+            return redirect('booking_detail', booking_id=booking.id)
+    else:
+        form = BookingForm(instance=booking)
+
+    return render(request, 'bookings/edit_booking.html', {'form': form, 'booking': booking})
+
+
+
 
 
 """
