@@ -29,30 +29,20 @@ class RestaurantBooking(models.Model):
     table = models.PositiveIntegerField()  
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
-"""
-used to prevent duplicate bookings
-"""
     class Meta:
+        """ Prevent duplicate bookings for the same table, date, and time. """
         unique_together = ('booking_date', 'booking_time', 'table') 
 
     def clean(self):
-        """ 
-        Prevent double booking for the same table at the same time
-        """
+        """Prevent double booking for the same table at the same time."""
         existing_booking = RestaurantBooking.objects.filter(
             booking_date=self.booking_date,
             booking_time=self.booking_time,
             table=self.table
-        ).exclude(id=self.id)  
+        ).exclude(pk=self.pk) 
+        
         if existing_booking.exists():
             raise ValidationError("This table is already booked at the selected time.")
-
-    def save(self, *args, **kwargs):
-        """
-        Validate before saving
-        """
-        self.clean()
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.customer_name} - {self.booking_date} {self.booking_time} - Table {self.table}"
