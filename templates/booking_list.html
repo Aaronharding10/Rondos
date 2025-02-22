@@ -1,1 +1,63 @@
 {% load static %}
+
+{% extends 'base.html' %}
+
+{% block title %}
+Booking List
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center custom-heading">Booking List</h2>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Customer Name</th>
+                        <th>Booking Date</th>
+                        <th>Booking Time</th>
+                        <th>Guests</th>
+                        <th>Table Number</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.id }}</td>
+                        <td>{{ booking.customer_name }}</td>
+                        <td>{{ booking.booking_date }}</td>
+                        <td>{{ booking.booking_time }}</td>
+                        <td>{{ booking.num_guests }}</td>
+                        <td>{{ booking.table }}</td>
+                        <td>
+                            {% if booking.status == 'approved' %}
+                                <span class="badge bg-success">Approved</span>
+                            {% elif booking.status == 'rejected' %}
+                                <span class="badge bg-danger">Rejected</span>
+                            {% else %}
+                                <span class="badge bg-warning">Pending</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'booking_detail' booking.id %}" class="btn btn-info btn-sm">View</a>
+                            <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary btn-sm">Edit</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center">No bookings available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="text-center">
+        <a href="{% url 'create_booking' %}" class="btn btn-success">Create New Booking</a>
+    </div>
+</div>
+{% endblock %}
