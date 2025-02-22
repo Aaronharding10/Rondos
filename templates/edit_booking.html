@@ -15,7 +15,7 @@ Edit Booking
                 <div class="card-body">
                     <h5 class="card-title">Edit Booking for {{ booking.customer_name }}</h5>
                     <form method="POST" enctype="multipart/form-data">
-                        
+                        {% csrf_token %}
 
                         <div class="form-group">
                             <label for="id_booking_date">Booking Date</label>
