@@ -15,16 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import handler404, handler500
+from bookings import views  
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('bookings/create/', views.create_booking, name='create_booking'),
+    path('', views.home, name='home'),  
+    path('accounts/', include('allauth.urls')),  
+    path('bookings/', views.booking_list, name='booking_list'),
+    path('booking/<int:booking_id>/', views.booking_detail, name='booking_detail'),
+    path('booking/create/', views.create_booking, name='create_booking'),
+    path('booking/edit/<int:booking_id>/', views.edit_booking, name='edit_booking'),
 ]
 
-"""
-Error handling views
-"""
-handler404 = 'your_project.views.page_not_found'
-handler500 = 'your_project.views.server_error'
+
+handler404 = 'your_app.views.custom_handler404'  
+handler500 = 'your_app.views.custom_handler500'
+
