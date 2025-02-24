@@ -2,21 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import RestaurantBooking
 from .forms import BookingForm
 
-# Create your views here.
 
-"""
-Home page view
-"""
+# Home page with basic info and booking option
 
 def home(request):
-    """
-    Home page of the restaurant, showing basic info and a booking option.
-    """
-    return render(request, 'home.html')
 
-"""
-function to handle booking creation and redirect to 
-"""
+    return render(request, 'home.html') 
+
+# Function to handle creating a booking
+
 def create_booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -28,17 +22,20 @@ def create_booking(request):
 
     return render(request, 'bookings/create_booking.html', {'form': form})
 
+# Booking list view
+
 def booking_list(request):
     bookings = RestaurantBooking.objects.all()
     return render(request, 'bookings/booking_list.html', {'bookings': bookings})
+
+# Booking detail view
 
 def booking_detail(request, booking_id):
     booking = get_object_or_404(RestaurantBooking, id=booking_id)
     return render(request, 'bookings/booking_detail.html', {'booking': booking})
 
-"""
-function to edit booking
-"""
+# Function to edit booking
+
 def edit_booking(request, booking_id):
     booking = get_object_or_404(RestaurantBooking, id=booking_id)
     if request.method == 'POST':
@@ -51,14 +48,11 @@ def edit_booking(request, booking_id):
 
     return render(request, 'bookings/edit_booking.html', {'form': form, 'booking': booking})
 
-
 """
-Error handling 404 and 500 views
+Error handling views
 """
-
 def custom_handler404(request, exception):
-    return render(request, '404.html', status=404)
-
+    return render(request, '404.html', status=404)  
 
 def custom_handler500(request):
-    return render(request, '500.html', status=500)
+    return render(request, '500.html', status=500) 
