@@ -3,10 +3,14 @@
 {% block content %}
     <div class="home-container">
         <h1>Welcome to Rondo's Restaurant!</h1>
-        <p>Enjoy delicious meals and great service at Rondo's. Book your table now or explore our delicious menu.</p>
+        <p>Established in 2025, Rondo's Restaurant is a family-owned business dedicated to serving beautiful, authentic cuisine.</p>
+
+        <p>Our mission is to provide our guests with an unforgettable dining experience by offering the finest dishes made with love and care. We are committed to using the best ingredients and traditional cooking methods to bring you the true taste of Italian flavors.</p>
 
         <div class="home-buttons">
+            <!--Link to book-->
             <a href="{% url 'create_booking' %}" class="btn">Make a Reservation</a>
+            <!--link to menu-->
             <a href="{% url 'menu' %}" class="btn">View Menu</a>
         </div>
     </div>
