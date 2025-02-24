@@ -25,6 +25,7 @@ urlpatterns = [
     path('booking/<int:booking_id>/', views.booking_detail, name='booking_detail'),
     path('booking/create/', views.create_booking, name='create_booking'),
     path('booking/edit/<int:booking_id>/', views.edit_booking, name='edit_booking'),
+    path('menu/', include('menu.urls')),
 ]
 
 
