@@ -5,22 +5,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rondo's Restaurant Booking</title>
+    <title>Rondo's Restaurant</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
 </head>
 <body>
     <header>
-        <h1>Rondo's Restaurant</h1>
         <nav>
             <ul>
-                <li><a href="{% url 'booking_list' %}">Home</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'create_booking' %}">Create Booking</a></li>
+                <li><a href="{% url 'menu' %}">Menu</a></li>
             </ul>
         </nav>
     </header>
 
+    <main>
+        {% block content %}
+        {% endblock %}
+
+    </main>
+    
     <footer>
-        <p></p>
+        <p>Rondo's Restaurant. All rights reserved. </p>
     </footer>
 </body>
 </html>
