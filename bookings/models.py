@@ -26,7 +26,7 @@ class RestaurantBooking(models.Model):
         choices=STATUS_CHOICES,
         default=PENDING,
     )
-    table = models.PositiveIntegerField()  
+    table = models.PositiveIntegerField(default=1)  
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
