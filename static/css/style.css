@@ -6,6 +6,13 @@ body {
     box-sizing: border-box;
     background-color: #f8f8f8;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+.main-content {
+    flex-grow: 1; 
 }
 
 /* Navbar */
@@ -89,38 +96,3 @@ body {
     bottom: 0;
     width: 100%;
 }
-
-/* Center Content */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Center content in the home-container */
-.home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
-    text-align: center; 
-    padding: 20px;
-}
-
-/* Optional: Styling for the home page buttons */
-.home-buttons .btn {
-    background-color: #f04e23; 
-    color: white;
-    padding: 15px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    display: inline-block;
-}
-
-.home-buttons .btn:hover {
-    background-color: #e03e17; 
-}
-

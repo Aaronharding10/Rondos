@@ -1,32 +1,40 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rondo's Restaurant</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'menu' %}">Menu</a></li>
-                <li><a href="{% url 'create_booking' %}">Make a reservation</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}">Rondo's Restaurant</a> 
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'menu' %}">Menu</a>
+            <a href="{% url 'create_booking' %}">Create Booking</a>
+        </div>
+    </nav>
 
-    <footer>
-        <p>© 2025 Rondo's Restaurant. All rights reserved.</p>
+   <!--main content-->
+   <div class="main-content">
+    {% block content %}  
+    {% endblock %}
+   </div>
+   
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Rondo's Restaurant. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
+
 
 
