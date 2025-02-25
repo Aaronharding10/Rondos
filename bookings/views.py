@@ -2,15 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import RestaurantBooking
 from .forms import BookingForm
 
-
 # Home page with basic info and booking option
-
 def home(request):
-
     return render(request, 'home.html') 
 
 # Function to handle creating a booking
-
 def create_booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -20,7 +16,7 @@ def create_booking(request):
     else:
         form = BookingForm()
 
-    return render(request, create_booking.html', {'form': form})
+    return render(request, 'create_booking.html', {'form': form}) 
 
 # Booking list view
 
