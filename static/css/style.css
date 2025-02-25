@@ -4,15 +4,10 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: url('/static/images/restaurantback.avif') center/cover no-repeat;
-    color: #333;
+    background:url(/static/images/restaurantback.avif) center/cover no-repeat;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; 
-}
-
-.main-content {
-    flex-grow: 1; 
+    min-height: 100vh;
 }
 
 /* Navbar */
@@ -41,39 +36,56 @@ body {
     border-radius: 5px;
 }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
-    background: red;
+.main-content {
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    padding: 10px;
+    color: rgba(231, 235, 235, 0.843);
+    size: 40px;
+    
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    color: white;
     text-align: center;
     padding: 20px;
-    color: white;
+    flex: 1;
+    size: 40px;
 }
+
 
 .hero h1 {
-    font-size: 50px;
-    margin-bottom: 10px;
-    text-shadow: white;
-    color: white;
+    font-size: 70px;
+    margin-bottom: 20px;
 }
-
 
 .hero p {
-    font-size: 20px;
+    font-size: 40px;
     margin-bottom: 20px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    color: white; 
+    max-width: 600px;
 }
 
-
 /* Buttons */
+.home-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .btn {
     display: inline-block;
-    padding: 12px 20px;
+    padding: 15px 30px;
     font-size: 18px;
     color: white;
     background: #d9534f;
@@ -81,7 +93,6 @@ body {
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
-    margin: 10px;
     transition: 0.3s;
 }
 
@@ -91,6 +102,9 @@ body {
 
 /* Footer */
 .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 20px;
     background: black;
@@ -98,4 +112,5 @@ body {
     position: relative;
     bottom: 0;
     width: 100%;
+    margin-top: auto; 
 }

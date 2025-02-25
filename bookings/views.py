@@ -20,7 +20,7 @@ def create_booking(request):
     else:
         form = BookingForm()
 
-    return render(request, 'bookings/create_booking.html', {'form': form})
+    return render(request, create_booking.html', {'form': form})
 
 # Booking list view
 
