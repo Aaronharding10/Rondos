@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f8f8f8;
+    background: url('/static/images/restaurantback.avif') center/cover no-repeat;
     color: #333;
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: url('CLOUDINARY_IMAGE_URL') center/cover no-repeat;
+    background: red;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,15 +57,18 @@ body {
 .hero h1 {
     font-size: 50px;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: white;
+    color: white;
 }
+
 
 .hero p {
     font-size: 20px;
     margin-bottom: 20px;
-    max-width: 600px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    color: white; 
 }
+
 
 /* Buttons */
 .btn {
