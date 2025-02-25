@@ -16,7 +16,7 @@ def create_booking(request):
         form = BookingForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('booking_list') 
+            return redirect('booking_list')
     else:
         form = BookingForm()
 
