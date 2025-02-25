@@ -77,6 +77,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / 'rondos' / 'templates',  
+            BASE_DIR / 'bookings' / 'templates', 
+            BASE_DIR / 'menu' / 'templates',  
         ],
         'APP_DIRS': True,  
         'OPTIONS': {
