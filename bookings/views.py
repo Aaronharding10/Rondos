@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import RestaurantBooking
 from .forms import BookingForm
@@ -6,20 +7,26 @@ from .forms import BookingForm
 def home(request):
     return render(request, 'home.html') 
 
+# function to create booking with success message
+
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from .models import RestaurantBooking
+from .forms import BookingForm
+
 # Function to handle creating a booking
 def create_booking(request):
+    form = BookingForm()
+    
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            booking = form.save()
+            form.save()
+            messages.success(request, 'Your booking was successfully created!')  
+            form = BookingForm() 
+    
+    return render(request, 'create_booking.html', {'form': form})
 
-            messages.success(request, f"Booking confirmed for {booking.customer_name}" on {booking.booking_date} at {booking.booking_time}!)
-                             
-            return redirect('booking_list')                 
-    else:
-        form = BookingForm()
-
-    return render(request, 'create_booking.html', {'form': form}) 
 
 # Booking list view
 
