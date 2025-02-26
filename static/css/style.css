@@ -15,8 +15,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 15px 20px;
+    background: rgba(50, 49, 49, 0.8);
+    padding: 15px 15px;
     position: fixed;
     width: 100%;
     top: 0;
@@ -44,7 +44,7 @@ body {
     align-items: center; 
     text-align: center;
     padding: 10px;
-    color: rgba(231, 235, 235, 0.843);
+    color: rgba(242, 245, 245, 0.843);
     size: 40px;
     
 }
@@ -112,4 +112,22 @@ body {
     bottom: 0;
     width: 100%;
     margin-top: auto; 
+}
+
+/* Menu Section */
+.menu-section-title {
+    font-size: 28px;  
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;  
+    text-transform: uppercase; 
+    color: #e63946;
+    border-bottom: 2px solid #e63946; 
+    display: inline-block; 
+
+}
+
+
+.menu-section {
+    margin-bottom: 50px;  
 }

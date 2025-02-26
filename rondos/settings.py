@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os 
+import os
 import dj_database_url
 
 if os.path.isfile('env.py'):
@@ -76,9 +76,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'rondos' / 'templates',  
-            BASE_DIR / 'bookings' / 'templates', 
-            BASE_DIR / 'menu' / 'templates',  
+            BASE_DIR / 'rondos' / 'templates', 
+            BASE_DIR / 'bookings' / 'templates',
+            BASE_DIR / 'menu' / 'templates', 
         ],
         'APP_DIRS': True,  
         'OPTIONS': {

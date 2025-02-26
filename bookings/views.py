@@ -10,15 +10,16 @@ def home(request):
 
 # Function to handle creating a booking
 def create_booking(request):
-    form = BookingForm()
-    
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your booking was successfully created!')  
-            form = BookingForm() 
-    
+            messages.success(request, "Your booking was successfully created!") 
+            return redirect('create_booking')  
+
+    else:
+        form = BookingForm()
+
     return render(request, 'create_booking.html', {'form': form})
 
 
