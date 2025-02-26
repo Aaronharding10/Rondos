@@ -7,12 +7,6 @@ from .forms import BookingForm
 def home(request):
     return render(request, 'home.html') 
 
-# function to create booking with success message
-
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from .models import RestaurantBooking
-from .forms import BookingForm
 
 # Function to handle creating a booking
 def create_booking(request):
