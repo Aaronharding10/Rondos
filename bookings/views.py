@@ -11,8 +11,11 @@ def create_booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('booking_list')
+            booking = form.save()
+
+            messages.success(request, f"Booking confirmed for {booking.customer_name}" on {booking.booking_date} at {booking.booking_time}!)
+                             
+            return redirect('booking_list')                 
     else:
         form = BookingForm()
 
