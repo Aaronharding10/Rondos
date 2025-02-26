@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background:url(/static/images/restaurantback.avif) center/cover no-repeat;
+    background:url(/static/images/darkres.jpeg) center/cover no-repeat;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -60,12 +60,11 @@ body {
     text-align: center;
     padding: 20px;
     flex: 1;
-    size: 40px;
 }
 
 
 .hero h1 {
-    font-size: 70px;
+    font-size: 90px;
     margin-bottom: 20px;
 }
 

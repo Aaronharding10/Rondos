@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', bookings_views.home, name='home'),  
-    path('menu/', menu_views.menu, name='menu'), 
+    path('menu/', include('menu.urls')), 
     path('bookings/', bookings_views.booking_list, name='booking_list'),
     path('booking/<int:booking_id>/', bookings_views.booking_detail, name='booking_detail'),
     path('booking/create/', bookings_views.create_booking, name='create_booking'),
