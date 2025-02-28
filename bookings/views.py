@@ -17,7 +17,8 @@ def create_booking(request):
             form.save()
             messages.success(request, "Your booking was successfully created!") 
             return redirect('booking_list')  
-
+        else:
+            print(form.errors)  # Print form errors to the console
     else:
         form = BookingForm()
 
