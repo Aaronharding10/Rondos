@@ -31,30 +31,42 @@ class BookingForm(forms.ModelForm):
             'booking_time': forms.TimeInput(attrs={'type': 'time'}),
         }
 
-   def clean(self):
-    """
-    This method ensures the number of guests is at least 1 
-    and checks that the table is not double-booked.
-    """
-    cleaned_data = super().clean()
-    num_guests = cleaned_data.get('num_guests')
+from django import forms
+from .models import RestaurantBooking
 
-    if num_guests is not None and num_guests < 1:
-        raise forms.ValidationError("Number of guests must be at least 1")
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = RestaurantBooking
+        fields = ['num_guests', 'booking_date', 'booking_time', 'table']
 
-    booking_date = cleaned_data.get('booking_date')
-    booking_time = cleaned_data.get('booking_time')
-    table = cleaned_data.get('table')
-
-    if booking_date and booking_time and table:
-        existing_booking = RestaurantBooking.objects.filter(
-            booking_date=booking_date,
-            booking_time=booking_time,
-            table=table
-        )
+    def clean(self):
+        """
+        This method ensures:
+        1. The number of guests is at least 1.
+        2. The table is not double-booked at the selected date and time.
+        """
+        cleaned_data = super().clean()
         
-        if existing_booking.exists():
-            raise forms.ValidationError("This table is already booked at the selected time.")
+        num_guests = cleaned_data.get('num_guests')
+        booking_date = cleaned_data.get('booking_date')
+        booking_time = cleaned_data.get('booking_time')
+        table = cleaned_data.get('table')
 
-    return cleaned_data
+        # Validate number of guests
+        if num_guests is not None and num_guests < 1:
+            raise forms.ValidationError("Number of guests must be at least 1")
+
+        # Ensure all required fields are provided before checking booking conflicts
+        if booking_date and booking_time and table:
+            existing_booking = RestaurantBooking.objects.filter(
+                booking_date=booking_date,
+                booking_time=booking_time,
+                table=table
+            )
+
+            if existing_booking.exists():
+                raise forms.ValidationError("This table is already booked at the selected time.")
+
+        return cleaned_data
+
 
