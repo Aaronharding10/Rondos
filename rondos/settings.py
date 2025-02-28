@@ -55,9 +55,10 @@ INSTALLED_APPS = [
 
 # Authentication Backends
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication
-    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth authentication
+    'django.contrib.auth.backends.ModelBackend',  
+    'allauth.account.auth_backends.AuthenticationBackend',  
 ]
+
 
 # Allauth 
 SITE_ID = 1
@@ -85,7 +86,7 @@ ROOT_URLCONF = 'rondos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  
+        'DIRS': [os.path.join(BASE_DIR, 'rondos/templates')], 
         'APP_DIRS': True,  
         'OPTIONS': {
             'context_processors': [
